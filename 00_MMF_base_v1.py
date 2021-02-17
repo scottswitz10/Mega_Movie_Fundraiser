@@ -23,3 +23,9 @@
      # calculate snack price
 
      # ask for payment method (and apply surcharde if necessary)
+
+
+# Calculate Total sales and profit
+
+# Out put data to text file
+
