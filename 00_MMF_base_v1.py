@@ -18,6 +18,7 @@ def not_blank(question):
         else:
             print("sorry - this can't be blank")
 
+
 def int_check(question, low_num, high_num):
 
     error = "Please enter a whole number between {} " \
@@ -30,7 +31,7 @@ def int_check(question, low_num, high_num):
                 try:
                     response = int(input(question))
 
-                    if low_num < response < high_num:
+                    if low_num <= response <= high_num:
                         return response
                     else:
                         print(error)
@@ -60,6 +61,8 @@ while name.lower() != "xxx" and count < MAX_TICKETS:
     if name.lower() == "xxx":
         break
 
+    age = int_check("How old? ", 11, 131)
+
     count += 1
     print()
 
@@ -75,13 +78,13 @@ while name.lower() != "xxx" and count < MAX_TICKETS:
         print("You have sold all the available tickets!")
 
     else:
-        print("You have solid {} tickets.  \n"
-              "There are {} places still available".format(count, MAX_TICKETS - count))
+        print("You have sold {} ticket/s.  \n"
+              "There are {} place/s still available".format(count, MAX_TICKETS - count))
 
     # Get name (can't be blank)
 
 
-    # Get age (between 12 and 130
+    # Get age (between 11 and 131
 
     # Calculate ticket price
 
