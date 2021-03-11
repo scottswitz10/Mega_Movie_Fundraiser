@@ -107,5 +107,6 @@ while name.lower() != "xxx" and ticket_count < MAX_TICKETS:
     # ask for payment method (and apply surcharde if necessary)
 
 # Calculate Total sales and profit
+print("Ticket Profit: ${:.2f}".format(profit))
 
 # Out put data to text file
