@@ -9,13 +9,12 @@ valid_snacks = [
     ["pita chips", "chips", "pc", "pita", "c"],
     ["water", "w", "aqua", "d"]
 ]
-
-
 # initialise variables
 snack_ok = ""
 snack = ""
 
 # loop three times to make testing quicker
+
 for item in range(0, 3):
   
   # ask user for desired snack and put it in lowercase

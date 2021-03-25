@@ -20,4 +20,5 @@ def yes_no(question):
 
 for item in range(0, 6):
     want_snacks = yes_no("Do you want snacks? ")
-
+print("answer OL, you said:", want_snacks)
+print()
