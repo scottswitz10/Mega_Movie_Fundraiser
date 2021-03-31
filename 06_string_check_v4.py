@@ -33,7 +33,7 @@ valid_snacks = [
  ["Popcorn", "p", "corn", "a"],
 ["M&M's", "m&m's", "mms", "m", "b"], # first item is M&M
  ["Pita Chips", "chips", "pc", "pita", "c"],
- ["Water", "w", "d", "Aqua"]
+ ["Water", "w", "water", "d", "Aqua"]
 ]
  
 yes_no = [
@@ -58,65 +58,42 @@ while check_snack == "invalid choice":
 
 #If they say yes, ask what snacks they want(and add to our snack list)
 if check_snack == "Yes":
+   desired_snack = ""
+else:
+  desired_snack = "xxx"
 
-  while desired_snack != "xxx":
-      # ask user for desired snack and put it in lowercase
-      desired_snack = input("Snack: ").lower()
+while desired_snack != "xxx":
+    # ask user for desired snack and put it in lowercase
+    desired_snack = input("Snack: ").lower()
 
-      if desired_snack == "xxx":
-        break
+    if desired_snack == "xxx":
+      break
 
-      # check if snack is valid 
-      snack_choice = string_check(desired_snack, valid_snacks)
-      print("Snack Choice: ", snack_choice)
+    # check if snack is valid 
+    snack_choice = string_check(desired_snack, valid_snacks)
+    print("Snack Choice: ", snack_choice)
 
-      # add snack to list...
+    # add snack to list...
 
-      # check the snack is not the exit code before adding
-      if snack_choice != "xxx" and snack_choice != "invalid choice":
-        snack_order.append(snack_choice)
+    # check the snack is not the exit code before adding
+    if snack_choice == "xxx":
+      break
+    elif snack_choice != "invalid choice":
+      snack_order.append(snack_choice)
+    else:
+      print("Please enter a valid snack choice \n")
 
-  # show snack orders
-  print()
-  if len(snack_order) == 0:
-      print("Snack Ordered: None")
+# show snack orders
+print()
 
-  else:
-      print("Snack Ordered:")
+if len(snack_order) == 0:
+  print("Snack Ordered: None")
 
-      for item in snack_order:
-          print(item)
+else:
+  print("Snack Ordered:")
 
-
-
-
-
-
-
-
-
-# loop three times to make testing quicker
-for item in range(0, 6):
- 
- # ask user for desired snack and put it in lowercase
- desired_snack = input("Snack: ").lower()
- 
- # check if snack is valid
- snack_choice = string_check(desired_snack, valid_snacks)
-
- # error message if invalid snack is chosen
- if snack_choice == "invalid choice":
-   print("Sorry - that is not a valid choice, please try again")
-   print()
-
- print("Snack Choice: ", snack_choice)
-
-# add snack to list...
-
-
-
-
-
+for item in snack_order:
+  print(item)
 
 
 print()
