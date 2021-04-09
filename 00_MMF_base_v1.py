@@ -110,3 +110,17 @@ while name.lower() != "xxx" and ticket_count < MAX_TICKETS:
 print("Ticket Profit: ${:.2f}".format(profit))
 
 # Out put data to text file
+    # Warns user that only one seat is left!
+    elif ticket_count == MAX_TICKETS - 1:
+      print("*** There is ONE seat left!! ***")
+
+    # Loop to ask for snacks
+
+    # calculate snack price
+
+    # ask for payment method (and apply surcharde if necessary)
+
+# Calculate Total sales and profit
+print("Ticket Profit: ${:.2f}".format(profit))
+
+# Out put data to text file

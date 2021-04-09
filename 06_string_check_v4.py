@@ -1,4 +1,4 @@
-
+import re
 
 # functions go here
 def string_check(choice, options):
@@ -29,6 +29,9 @@ def string_check(choice, options):
 # Each item in valid snacks is a list with
 # Valid options for each snack <full name, full letter (a - e)
 # , and possible abbreviations etc>
+
+number_regex = "^[1-9]"
+
 valid_snacks = [
  ["Popcorn", "p", "corn", "a"],
 ["M&M's", "m&m's", "mms", "m", "b"], # first item is M&M
@@ -42,32 +45,75 @@ yes_no = [
 ]
  
 
-# holds snack order for a single user  
+# holds snack order for all clients
 snack_order = []
 
 #ask user if they want a snack
 check_snack = "invalid choice"
 while check_snack == "invalid choice":
- want_snack = input("Do you want to order snack? ").lower()
- check_snack = string_check(want_snack, yes_no)
- if check_snack == "invalid choice":
-   print("Please enter yes / no")
+    want_snack = input("Do you want to order snack? ").lower()
+    check_snack = string_check(want_snack, yes_no)
+    if check_snack == "invalid choice":
+        print("Please enter yes / no")
  
-
-
 
 #If they say yes, ask what snacks they want(and add to our snack list)
 if check_snack == "Yes":
-   desired_snack = ""
+    desired_snack = ""
 else:
-  desired_snack = "xxx"
+    desired_snack = "xxx"
 
 while desired_snack != "xxx":
+
+    snack_row = []
+
     # ask user for desired snack and put it in lowercase
     desired_snack = input("Snack: ").lower()
 
     if desired_snack == "xxx":
       break
+
+    if re.match(number_regex, desired_snack):
+        amount = int(desired_snack[0])
+        designed_snack = desired_snack[1:]
+
+    else:
+        amount = 1
+        desired_snack = desired_snack
+
+    # remove white space around snack
+    desired_snack = desired_snack.string()
+
+    # check if snack is valid
+    snack_choice = string_check(desired_snack, valid_snacks)
+
+    # check snack amount is valid (less than 5)
+    if amount >= 5:
+        print("Sorry - we have a four snack maximum")
+        snack_choice = "invalid choice"
+
+    # add snack AND amount to list...
+    amount_snack = "{} {}".format(amount, snack_choice)
+
+    #check that snack is not the exit code before adding
+    if snack_choice != "xxx" and snack_choice !="invalid choice"
+    snack_order.append(amount_snack)
+
+# Show snack open
+print()
+if len(snack_order) ==0:
+    print("Snacks Ordered: None")
+
+else:
+    print("Snacks Ordered:")
+
+    for item in snack_order:
+        print(item)
+
+
+
+
+
 
     # check if snack is valid 
     snack_choice = string_check(desired_snack, valid_snacks)
