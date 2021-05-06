@@ -20,11 +20,11 @@ def string_check(choice, options):
     else:
       is_valid = "no"
 
-    # if the snack is not OK - ask question again.
-    if is_valid == "yes":
-      return chosen
-    else:
-      return "invalid choice"
+  # if the snack is not OK - ask question again.
+  if is_valid == "yes":
+    return chosen
+  else:
+    return "invalid choice"
  
 # regular expression to find if the item starts with a number
 number_regex = "^[1-9]"
@@ -38,7 +38,8 @@ valid_snacks = [
 ["popcorn", "p", "corn", "a"],
 ["M&M's", "m&m's", "mms", "m", "b"], # first item is M&M
 ["pita chips", "chips", "pc", "pita", "c"],
-["water", "fiji water", "fiji", "w", "d"],
+["water", "w", "d"],
+["orange juice", "oj", "juice"],
 ["xxx"]
 ]
 
@@ -63,6 +64,9 @@ if check_snack == "Yes":
  
   desired_snack = ""
   while desired_snack != "xxx" :
+
+    snack_row = []
+
     # ask user for desired snack and put it in in lowercase
     desired_snack = input("snack: ").lower()
 
@@ -83,6 +87,8 @@ if check_snack == "Yes":
 
     # check if snack is valid
     snack_choice = string_check(desired_snack, valid_snacks)
+    if snack_choice == "invalid choice":
+      print("Please enter a valid snack choice")
 
     #check snack amount is avlid (less than 5)
     if amount >= 5:
@@ -94,7 +100,13 @@ if check_snack == "Yes":
 
     # check that the snack is not an exit code before adding
     if snack_choice != "xxx" and snack_choice != "invalid choice":
-      snack_order.append(amount_snack)
+      
+      # create mini-list (amount and item)
+      snack_row.append(amount)
+      snack_row.append(snack_choice)
+
+      # add mini-list to master list
+      snack_order.append(snack_row)
 
 # show snack oreders
 print()
@@ -108,6 +120,11 @@ for item in snack_order:
      print(item)
  
 print ("snack_order")
+
+print()
+print("**** Master List ****")
+print(snack_order)
+
 
 
 

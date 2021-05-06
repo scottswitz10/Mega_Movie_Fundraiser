@@ -194,14 +194,3 @@ print("Ticket Profit: ${:.2f}".format(profit))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
