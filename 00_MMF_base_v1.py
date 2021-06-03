@@ -1,4 +1,6 @@
 #  import statements
+import pandas
+import re
 
 # functions go here
 
@@ -71,6 +73,15 @@ name = ""
 ticket_count = 0
 profit = 0
 MAX_TICKETS = 5
+
+all_names = []
+all_tickets = []
+
+# Data Frame Dictionary
+movie_data_dict = {
+    'Name': all_names,
+    'Ticket': all_tickets
+}
 
 while name.lower() != "xxx" and ticket_count < MAX_TICKETS:
 

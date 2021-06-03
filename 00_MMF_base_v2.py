@@ -1,3 +1,5 @@
+
+ 
 #  import statements
 
 # functions go here
@@ -53,7 +55,9 @@ valid_snacks = [
 ["M&M's", "m&m's", "mms", "m", "b"], # first item is M&M
 ["pita chips", "chips", "pc", "pita", "c"],
 ["water", "w", "d"],
-["orange juice", "oj", "juice"],
+["orange juice", "oj", "juice", "e"],
+["Oreo's", "O", "f"],
+["Snicker's", "niggers", "g"]
 ["xxx"]
 ]
 
@@ -95,7 +99,7 @@ while name.lower() != "xxx" and ticket_count < MAX_TICKETS:
       ticket_price = 7.5
     elif age <65:
       ticket_price = 10.5
-    else:
+    else: 
         ticket_price = 6.5
 
     profit_made = ticket_price - 5
