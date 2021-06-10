@@ -1,16 +1,16 @@
+import pandas
+
 # Initialise snack lists...
+
+
+#data frame dictionary
 
 names = ['Scott', 'Luke', 'Monty', 'Zav', 'Wyatt']
  
-popcorn = []
-mms = []
-pita_chips = []
-water = []
-orange_juice = []
 
-snack_lists = [popcorn, mms, pita_chips, water, orange_juice,]
 
-snack_menu_dict = {
+movie_data_dict = {
+    'Name': all_names,
     'Popcorn': popcorn,
     'Water': water,
     'Pita Chips': pita_chips,
@@ -19,7 +19,7 @@ snack_menu_dict = {
 }
 
 test_data =[
-    [[2, ' Popcorn'], [1, 'Pita Chips'], [1, 'Orange Juice']],
+    [[2, 'Popcorn'], [1, 'Pita Chips'], [1, 'Orange Juice']],
     [[]],
     [[1, 'Water']],
     [[1, 'Pita chips'], [1, 'Orange Juice']],
@@ -39,11 +39,12 @@ for client_order in test_data:
     snack_order = test_data[count]
     count += 1
 
-    for item in snack_order:
-        to_find = (item[1])
-        amount = (item[0])
-        add_lists = snack_menu_dict[to_find]
-        add_lists[-1] = amount
+
+for item in snack_order:
+    to_find = (item[1])
+    amount = (item[0])
+    add_lists = movie_data_dict[to_find]
+    add_lists[-1] = amount
 
 
 print()
@@ -52,40 +53,6 @@ print("M&Ms:", snack_lists[1])
 print("Pita Chips:", snack_lists[2])
 print("Water:", snack_lists[3])
 print("Orange Juice:", snack_lists[4])
-    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+movie_fame = pandas.DataFrame(movie_data_dict)
+print(movie_fame)

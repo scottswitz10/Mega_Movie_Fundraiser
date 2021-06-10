@@ -206,11 +206,24 @@ ticket_sales = 0
 all_names = []
 all_tickets = []
 
+popcorn = []
+mms = []
+pita_chips = []
+water = []
+orange_juice = []
+
+snack_lists = [popcorn, mms, pita_chips, water, orange_juice,]
+
 
 #data frame dictionary
 movie_data_dict = {
-  'Name': all_names,
-  'Ticket': all_tickets
+    'Name': all_names,
+    'Popcorn': popcorn,
+    'Water': water,
+    'Pita Chips': pita_chips,
+    'M&Ms': mms,
+    'Orange Juice': orange_juice,
+    'Ticket': all_tickets
 }
 
 profit = 0
@@ -273,10 +286,14 @@ while name != "xxx" and count < MAX_TICKETS:
 movie_fame = pandas.DataFrame(movie_data_dict)
 print(movie_fame)
 
-print()
-
 # calculate total sales and profit
+ticket_profit = ticket_sales - (5 * ticket_count)
 print("profit from tickets:  ${:.2f}".format(profit))
+
+# Tell user if they have unsold tickets...
+if ticket_count == MAX_TICKETS:
+    print("You have sold all the available tickets!")
+else:
 
 # out put data to text file
 
