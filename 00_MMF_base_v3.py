@@ -282,6 +282,15 @@ while name != "xxx" and count < MAX_TICKETS:
         print(" you have sold {} ticket/s.  there are {} places still available".format(count, MAX_TICKETS - count))
 
 
+
+print("all_names", all_names)
+print("popcorn", popcorn)
+print("water", water)
+print("pita_chips", pita_chips)
+print("mms", mms)
+print("orange_juice", orange_juice)
+print("all_tickets", all_tickets)
+
 # **** Printing area, done selling stuff ****
 movie_fame = pandas.DataFrame(movie_data_dict)
 print(movie_fame)
