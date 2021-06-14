@@ -2,7 +2,7 @@ import pandas
 
 # initialise snack lists
 
-all_names = ['Luke', 'Scott', 'Lily', 'Zavier', 'Akinah']
+all_names = ['Scott', 'Luke', 'Monty', 'Zav', 'Wyatt']
 all_tickets = [7.5, 10.5, 10.5, 10.5, 6.5]
 
 popcorn = []
