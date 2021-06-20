@@ -17,11 +17,11 @@ snack_lists = [popcorn, mms, pita_chips, water, orange_juice]
 movie_data_dict = {
     'name': all_names,
     'ticket': all_tickets,
-    'popcorn': popcorn,
-    'water': water,
-    'pita chips': pita_chips,
-    'm&ms': mms,
-    'orange juice': orange_juice
+    'Popcorn': popcorn,
+    'Water': water,
+    'Pita Chips': pita_chips,
+    'M&Ms': mms,
+    'Orange Juice': orange_juice
 }
 
 # cost of each snack

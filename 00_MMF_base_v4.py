@@ -179,7 +179,7 @@ number_regex = "^[1-9]"
 # , and possible abbreviations etc
 valid_snacks = [
 ["popcorn", "p", "pop", "corn", "a"],
-["M&M's", "m&m's", "mms", "m", "b"], # first item is M&M
+["M&Ms", "m&m's", "mms", "m", "b"], # first item is M&M
 ["pita chips", "chips", "pc", "pita", "c"],
 ["water", "Fiji", "w", "d"],
 ["orange juice", "oj", "e"],
@@ -278,6 +278,16 @@ while name != "xxx" and count < MAX_TICKETS:
     get_order = get_snacks(valid_snacks)
     print(get_order)
 
+    for item in snack_lists:
+        item.append(0)
+
+    for item in get_order:
+        if len(item) > 0:
+            to_find = (item[1])
+            amount = (item[0])
+            add_list = movie_data_dict [to_find]
+            add_list [-1] = amount
+
     # Get payment method and apply surcharge if necessary
     # Ask for payment method 
     how_pay = "invalid choice"
@@ -285,15 +295,12 @@ while name != "xxx" and count < MAX_TICKETS:
         how_pay = input("Please choose a payment method (cash /credit)?") . lower()
         how_pay = string_check(how_pay, pay_method)
 
-            # Ask for the subtotal (for testing purposes)
-    subtotal =float(input("Sub total? $"))
-
     if how_pay == "Credit":
-        surcharge = 0.05 * subtotal
+        surcharge_multipier = 0.05
     else:
-        surcharge = 0
+        surcharge_multipier = 0
 
-    all_surcharge.append(surcharge)
+    all_surcharge.append(surcharge_multipier)
 
     # 
 
@@ -333,8 +340,23 @@ print("orange_juice", orange_juice)
 print("all_tickets", all_tickets)
 
 # **** Printing area, done selling stuff ****
-movie_fame = pandas.DataFrame(movie_data_dict)
-print(movie_fame)
+movie_frame = pandas.DataFrame(movie_data_dict)
+movie_frame = movie_frame.set_index('Name')
+print(movie_frame)
+
+movie_frame ["sub total"] = \
+    movie_frame ['Ticket'] + \
+    movie_frame ['popcorn'] *price_dict ['popcorn'] + \
+    movie_frame ['water'] *price_dict ['water'] + \
+    movie_frame ['pita chips'] *price_dict ['pita chips'] + \
+    movie_frame ['m&ms'] *price_dict ['m&ms'] + \
+    movie_frame ['orange juice'] *price_dict ['orange juice']
+
+# shorten column names
+movie_frame = movie_frame.rename(columns={'orange juice': 'oj',
+'pita chips': 'chips'})
+
+
 
 # calculate total sales and profit
 ticket_profit = ticket_sales - (5 * ticket_count)
