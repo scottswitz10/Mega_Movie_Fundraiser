@@ -221,7 +221,7 @@ orange_juice = []
 
 snack_lists = [popcorn, mms, pita_chips, water, orange_juice,]
 
-all_surcharge = []
+surcharge_mult_list= []
 
 
 #data frame dictionary
@@ -233,7 +233,7 @@ movie_data_dict = {
     'M&Ms': mms,
     'Orange Juice': orange_juice,
     'Ticket': all_tickets,
-    'Surcharge': all_surcharge
+    'Surcharge_Multiplier': surcharge_mult_list
 }
 
 # cost of each snack 
@@ -300,7 +300,7 @@ while name != "xxx" and count < MAX_TICKETS:
     else:
         surcharge_multipier = 0
 
-    all_surcharge.append(surcharge_multipier)
+    surcharge_mult_list.append(surcharge_multipier)
 
     # 
 
@@ -344,19 +344,38 @@ movie_frame = pandas.DataFrame(movie_data_dict)
 movie_frame = movie_frame.set_index('Name')
 print(movie_frame)
 
-movie_frame ["sub total"] = \
+movie_frame ["Sub Total"] = \
     movie_frame ['Ticket'] + \
-    movie_frame ['popcorn'] *price_dict ['popcorn'] + \
-    movie_frame ['water'] *price_dict ['water'] + \
-    movie_frame ['pita chips'] *price_dict ['pita chips'] + \
-    movie_frame ['m&ms'] *price_dict ['m&ms'] + \
-    movie_frame ['orange juice'] *price_dict ['orange juice']
+    movie_frame ['Popcorn']*price_dict['Popcorn'] + \
+    movie_frame ['Water']*price_dict['Water'] + \
+    movie_frame ['Pita Chips']*price_dict['Pita Chips'] + \
+    movie_frame ['M&Ms']*price_dict['M&Ms'] + \
+    movie_frame ['Orange Juice']*price_dict['Orange Juice']
+
+movie_frame["Surcharge"]=\
+    movie_frame["Sub Total"] * movie_frame["Surcharge_Multiplier"]
+
+movie_frame["Total"] = movie_frame["Sub Total"] + \
+    movie_frame['Surcharge']
 
 # shorten column names
 movie_frame = movie_frame.rename(columns={'orange juice': 'oj',
-'pita chips': 'chips'})
+'pita chips': 'chips', 'Surcharge_Multiplier': 'SM'})
 
+# Set up columns to be printed
+pandas.set_option('display.max_columns', None)
 
+# Display numbers to 2 dp...
+pandas.set_option('precision',2)
+
+print_all = input("print all columns?? (y) for yes ")
+if print_all =="y":
+    print(movie_frame)
+else:
+    print(movie_frame[['Ticket', 'Sub Total',
+                        'Surcharge', 'Total']])
+
+print()
 
 # calculate total sales and profit
 ticket_profit = ticket_sales - (5 * ticket_count)
