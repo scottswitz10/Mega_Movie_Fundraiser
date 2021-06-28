@@ -168,6 +168,23 @@ def currency(x):
     return "${:.2f}".format(x)
 
 
+# Functions to show instructions if necessary
+def instructions(options):
+    show_help = "invalid choice"
+    while show_help == "invalid choice":
+        show_help = input("Would you like to read the instructions? ").lower()
+        print("before chedking", show_help)
+        show_help = string_check(show_help, options)
+        print("after checking", show_help)
+
+
+    if show_help == "Yes":
+        print()
+        print("**** Mega Movie Fundraiser Instructions ****")
+        print()
+        print("Instructions go here. They are brief but helpful")
+
+    return ""
 
 # main routine goes here
 
@@ -259,7 +276,8 @@ price_dict = {
     'Orange Juice': 3.25
 }
 
-#Ask
+# Ask user if they have used the program before and show instrustions
+instructions(yes_no)
 
 profit = 0
 count = 0
